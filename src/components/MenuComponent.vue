@@ -10,17 +10,17 @@
                     <li class="nav-item">
                         <router-link to="/new" class="nav-link">Nuevo personaje</router-link>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <router-link to="/edit" class="nav-link">Modificar personaje</router-link>
-                    </li> -->
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Series
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><hr class="dropdown-divider"/></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li v-for="serie in series" :key="serie">
+                                <router-link :to="/serie/+serie.idSerie" class="dropdown-item">{{ serie.nombre }}</router-link>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -30,7 +30,21 @@
 </template>
 
 <script>
+import ServicioSeries from '@/services/ServicioSeries';
+
+const service = new ServicioSeries();
 export default {
+    data(){
+        return {
+            series: []
+        }
+    },
+    mounted(){
+        service.getSeries()
+        .then(response => {
+            this.series = response;
+        })
+    }
 
 }
 </script>
