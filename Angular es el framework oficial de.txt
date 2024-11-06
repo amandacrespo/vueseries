@@ -1,0 +1,9 @@
+Angular es el framework oficial de Google.
+
+Tenemos los mismos conceptos que los framworks anteriores. No tiene state y la organización de los componentes es distinta, ay que se separan en ficheros distintos.
+
+Utiliza el lenguaje Typescript que es lo mismo que JavaScript, pero con tipado de datos.
+
+//! INSTALACIÓN
+
+npm i -g @angular/cli@latest
